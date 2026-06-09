@@ -1,0 +1,45 @@
+project:
+  name: VeriPresence
+  version: "1.0.0"
+
+paths:
+  enrollment_dir: data/raw/enrollment
+  model_path: artifacts/models/veripresence.joblib
+  runs_dir: artifacts/runs
+  database_path: runtime/veripresence.db
+
+preprocessing:
+  face_size: 128
+  min_face_size: 48
+  detection_scale_factor: 1.1
+  detection_min_neighbors: 5
+  crop_margin: 0.18
+  try_rotations: true
+
+training:
+  seed: 42
+  validation_fraction: 0.25
+  cv_folds: 3
+  c_values: [0.1, 1.0, 10.0]
+  augmentation_copies: 1
+  minimum_samples_per_identity: 3
+  confidence_threshold_bounds: [0.55, 0.90]
+  margin_threshold_bounds: [0.10, 0.60]
+
+inference:
+  unknown_label: unknown
+  attendance_cooldown_seconds: 300
+  process_every_n_frames: 3
+  camera_index: 0
+
+quality:
+  enabled: true
+  min_brightness: 30.0
+  max_brightness: 225.0
+  min_contrast: 15.0
+  min_sharpness: 15.0
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  max_upload_bytes: 8000000

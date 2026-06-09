@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.env
+
+# Private biometric enrollment data and generated artifacts.
+data/raw/enrollment/*
+!data/raw/enrollment/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+runtime/*
+!runtime/.gitkeep
